@@ -1,3 +1,4 @@
+django-extensions
 libsass
 django-compressor
 django-sass-processor
