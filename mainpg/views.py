@@ -1,16 +1,10 @@
-from urllib import request
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
-from django.views import generic
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 import googlemaps
-import html
 from django.http import HttpResponse
 from pyparsing import empty
 import requests
-import json
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 import wikipediaapi
