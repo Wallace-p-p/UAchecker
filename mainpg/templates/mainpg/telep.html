@@ -1,0 +1,157 @@
+{% extends 'baseb.html' %}
+{% load static %}
+{% block body %}
+<a  href="#">
+    <div class="container logotop">
+        <img src="{% static  'UAClogo.PNG' %}" style="object-fit: contain; width: 100%; height: 100%;">
+    </div>
+    <!--<img src="{% static  'UAClogo.PNG' %}" style="position:fixed; top:0; left:47%; z-index: 5;height: 75px;width: 75px;">-->
+</a>
+
+<div class="container-fluid ter">
+    
+    <img class="b1" src="{% static  'b1.PNG' %}" />
+    <img class="b2" src="{% static  'b2.PNG' %}" />
+    <img class="b3" src="{% static  'b3.PNG' %}" />
+    <img class="b4" src="{% static  'b4.PNG' %}" />
+    <img class="b5" src="{% static  'b5.PNG' %}" />
+    <img class="b6" src="{% static  'b6.PNG' %}" />
+    <img class="b7" src="{% static  'b7.PNG' %}" />
+    
+    
+    <div class="container px-2" id="text">
+        <div class="col-md-6">
+            <h1 class="mx-2 mt-8">UAChecker</h1>
+            <h4 class="mx-2">Looking for general information about the Bigest Urban Areas? This app gathers the main statistics that analyze what it is like to live in these places.</h4>
+            <link rel="prefetch stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800,600">
+            <link rel="stylesheet" href="{% static  'mainpg/autocomplete/dist/teleport-autocomplete.css' %}">   
+            <input type="text" class="my-input mt-5 " name="field" tabindex="1" autocomplete="off" placeholder="Search">
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="strip1">
+</div>
+
+
+<div id="load" class="results text-center" style="display: none;"><img src="{% static  'load.GIF' %}" width="400" height="300"/></div>
+<div id="addcontent" style="display: none;">
+<div class="container py-3 pri">
+    <h5 id="uaname"></h5>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="add1"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="add2"></div>
+        </div>
+    </div>
+</div>
+<div class="add3"></div>
+<div class="container py-3 pri  text-center">
+    <div class="container add4" style="max-width: 700px; text-align: justify; text-justify: auto;"></div>
+</div>
+
+<div class="container py-3 pri">
+    <div class="add8"></div>
+</div>
+
+<div class="container-fluid conC1 py-3" id="scrollr" >
+    <style>
+        #scrollr{
+            overflow-x: auto;
+            overflow-y: hidden;
+            border: 1px solid rgb(112, 108, 108);
+            box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.562);
+        }
+        .hs {
+            display: flex;
+            white-space: nowrap;
+        }
+        .item{
+            max-width: 420px;
+            max-height: 30rem;
+            overflow: auto;
+            margin-right: 2px;
+            margin-left: 2px;
+            border: 1px solid rgb(112, 108, 108);
+        }
+    </style>
+    <div class="hs mx-md-5" id="add5"></div>
+</div>
+<div class="container py-3 pri">
+    <div class="add7"></div>
+</div>
+<div class="container-fluid conC1 py-3" id="scrollr" >
+    <div class="hs mx-md-5" id="add6"></div>
+</div>
+</div>
+
+<div class="container-fluid foot">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top mx-5">
+        <div class="col-md-4 mb-0">
+            <p>This site data comes from:</p>
+            <p>Teleport API, Google Places, WikiPedia</p> 
+
+        </div>
+        <div class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto">
+            <p>Made by:</p>
+            <p><a href="#"><img src="{% static  'LogoPrincipal.PNG' %}"  alt="" width="25" height="25"></a><a href="#">Wallace Pannace Palma</a></p>
+        </div>
+        <ul class="nav col-md-4 justify-content-end">
+            <p class="nav-item"><a href="#" class="nav-link px-2">Go up</a></p>
+        </ul>
+    </footer>
+</div>
+
+<script src="{% static  'mainpg/autocomplete/dist/teleport-autocomplete.js' %}"></script>
+<script>
+    var $results = document.querySelector('.results');
+    var appendToResult = $results.insertAdjacentHTML.bind($results, 'afterend');
+
+    TeleportAutocomplete.init('.my-input').on('change', function(value) {
+        if( value.name == ''){
+            return;
+        }
+        document.getElementById("addcontent").style.display = "none";
+        document.getElementById("load").style.display = "block";
+        $( ".add1" ).empty();
+        $( ".add2" ).empty();
+        $( ".add3" ).empty();
+        $( ".add4" ).empty();
+        $( ".add7" ).empty();
+        $( ".add8" ).empty();
+        $( "#add5" ).empty();
+        $( "#add6" ).empty();
+        $( "#uaname" ).empty();
+        var $chosenc = value.name;
+        var $slugc = value.uaSlug;
+        $.get( "{% url 'mainpg:add1' %}",  { namec: $chosenc, slugc: $slugc } )
+            .done(function( data ) {
+                document.getElementById("load").style.display = "none";
+                document.getElementById("addcontent").style.display = "block";
+                $( "#uaname" ).append( $chosenc );
+                
+                $( ".add1" ).append( data['add1'] );
+                $(".add1").addClass("rotdiv");
+                $( ".add2" ).append( data['add2'] );
+                $(".add2").addClass("rotdiv");
+                $( ".add3" ).append( data['add3'] );
+                $(".add3").addClass("rotdiv");
+                $( ".add4" ).append( data['add4'] );
+                $(".add4").addClass("rotdiv");
+                $( ".add7" ).append( data['add7'] );
+                $(".add7").addClass("rotdiv");
+                $( ".add8" ).append( data['add8'] );
+                $(".add8").addClass("rotdiv");
+                $( "#add5" ).append( data['add5'] );
+                $("#add5").addClass("rotdiv");
+                $( "#add6" ).append( data['add6'] );
+                $("#add6").addClass("rotdiv");
+            });
+        
+        
+    });
+    
+</script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<!--<h5>{{ university }}</h5>-->
+
+{% for x in photorefs %}
+<div class="item">
+<img src="https://maps.googleapis.com/maps/api/place/photo
+?maxwidth=400
+&photo_reference={{ x }}
+&key={{ api_key }}" class="img-fluid" alt="">
+</div>
+{% endfor %}
+
+<!--
+<div class="container-fluid sec" id="scrollr" >
+    <style>
+        #scrollr{
+            overflow: auto;
+            max-height: 30rem;
+            border: 1px solid rgb(112, 108, 108);
+            box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.562);
+        }
+        .hs {
+            display: flex;
+            white-space: nowrap;
+        }
+        .item{
+            max-width: 420px;
+            min-height: 30rem;
+            overflow: auto;
+            max-height: 30rem;
+            margin-right: 2px;
+            margin-left: 2px;
+            border: 1px solid rgb(112, 108, 108);
+        }
+    </style>
+    
+   
+    <div class="hs mx-md-5">
+        {% for x in photorefs %}
+                <div class="item">
+                <img src="https://maps.googleapis.com/maps/api/place/photo
+                ?maxwidth=400
+                &photo_reference={{ x }}
+                &key={{ api_key }}" class="img-fluid" alt="">
+                </div>
+        {% endfor %}
+    </div>
+</div>-->
