@@ -3,7 +3,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 import googlemaps
 from django.http import HttpResponse
-from pyparsing import empty
 import requests
 from django.http import JsonResponse
 from django.template.loader import render_to_string
