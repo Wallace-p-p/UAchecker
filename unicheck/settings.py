@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-+z5fh*ziqlhw%$@jn$ltd3nhg%7e+rh3ei8k*v3c@(xp(xy1=l
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '*',
     'uacheckerapp.herokuapp.com',
     '127.0.0.1',
 ]
@@ -124,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
