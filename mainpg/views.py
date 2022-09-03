@@ -7,6 +7,7 @@ import requests
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 import wikipediaapi
+import os
 
 
 
@@ -20,7 +21,7 @@ class GeoView(View):
             'country': geodata['country'],
             'latitude': geodata['lat'],
             'longitude': geodata['lon'],
-            'api_key': 'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc'
+            'api_key': os.environ.get('GOOGLEKEY')
         }
         return render(request, 'mainpg/index.html', ctx)
 
@@ -56,7 +57,7 @@ class Teleportadd1View(View):
         text1 = summary_ua
 
         #GoogleMaps map
-        gmaps = googlemaps.Client(key='AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
+        gmaps = googlemaps.Client(key=os.environ.get('GOOGLEKEY'))
         
         try:
             location = name
@@ -66,7 +67,7 @@ class Teleportadd1View(View):
                 'name': name,
                 'latitude': results[0]['geometry']['location']['lat'],
                 'longitude': results[0]['geometry']['location']['lng'],
-                'api_key': 'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc'
+                'api_key': os.environ.get('GOOGLEKEY')
             }
             text2 = render_to_string("mainpg/add2.html", ctx2)
 
@@ -119,7 +120,7 @@ class Teleportadd1View(View):
             location = universityName
             aqui = gmaps.places(query=location)
             results = aqui.get('results')
-            place_id = requests.get('https://maps.googleapis.com/maps/api/place/details/json'+'?place_id='+results[0]['place_id']+'&key='+'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
+            place_id = requests.get('https://maps.googleapis.com/maps/api/place/details/json'+'?place_id='+results[0]['place_id']+'&key='+os.environ.get('GOOGLEKEY'))
             place_id = place_id.json()
             try:
                 uniweb = place_id['result']['website']
@@ -131,7 +132,7 @@ class Teleportadd1View(View):
             ctx5 = {
                 'university': universityName,
                 'photorefs': photorefs,
-                'api_key': 'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc'
+                'api_key': os.environ.get('GOOGLEKEY')
             }
             text5 = render_to_string("mainpg/add5.html", ctx5)
 
@@ -140,11 +141,11 @@ class Teleportadd1View(View):
 
         #City images
         try:
-            gmaps = googlemaps.Client(key='AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
+            gmaps = googlemaps.Client(key=os.environ.get('GOOGLEKEY'))
             location = name
             city_p = gmaps.places(query=location)
             results = city_p.get('results')
-            place_id = requests.get('https://maps.googleapis.com/maps/api/place/details/json'+'?place_id='+results[0]['place_id']+'&key='+'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
+            place_id = requests.get('https://maps.googleapis.com/maps/api/place/details/json'+'?place_id='+results[0]['place_id']+'&key='+os.environ.get('GOOGLEKEY'))
             place_id = place_id.json()
             photorefs =[]
             try:
@@ -156,7 +157,7 @@ class Teleportadd1View(View):
             ctx5 = {
                 'university': name,
                 'photorefs': photorefs,
-                'api_key': 'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc',
+                'api_key': os.environ.get('GOOGLEKEY'),
             }
             text6 = render_to_string("mainpg/add5.html", ctx5)
 
@@ -215,11 +216,11 @@ class TeleportaddView(View):
 
 class GplaceView(View):
     def get(self, request):
-        gmaps = googlemaps.Client(key='AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
+        gmaps = googlemaps.Client(key=os.environ.get('GOOGLEKEY'))
         location = 'Curitiba'
         aqui = gmaps.places(query=location)
         results = aqui.get('results')
-        place_id = requests.get('https://maps.googleapis.com/maps/api/place/details/json'+'?place_id='+results[0]['place_id']+'&key='+'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
+        place_id = requests.get('https://maps.googleapis.com/maps/api/place/details/json'+'?place_id='+results[0]['place_id']+'&key='+os.environ.get('GOOGLEKEY'))
         place_id = place_id.json()
         photorefs =[]
         for i in range(len(place_id['result']['photos'])):
@@ -233,7 +234,7 @@ class GplaceView(View):
             'latitude': results[0]['geometry']['location']['lat'],
             'longitude': results[0]['geometry']['location']['lng'],
             'photoref': photorefs,
-            'api_key': 'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc'
+            'api_key': os.environ.get('GOOGLEKEY')
         }
         return render(request, 'mainpg/index.html', ctx)
 
@@ -242,10 +243,10 @@ class TestView(View):
         try:
             name = 'Sao Paulo'
             location = name
-            gmaps = googlemaps.Client(key='AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
+            gmaps = googlemaps.Client(key=os.environ.get('GOOGLEKEY'))
             aqui = gmaps.places(query=location)
             results = aqui.get('results')
-            place_id = requests.get('https://maps.googleapis.com/maps/api/place/details/json'+'?place_id='+results[0]['place_id']+'&key='+'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
+            place_id = requests.get('https://maps.googleapis.com/maps/api/place/details/json'+'?place_id='+results[0]['place_id']+'&key='+os.environ.get('GOOGLEKEY'))
             place_id = place_id.json()
             print(place_id['result'])
             photorefs =[]
@@ -254,7 +255,7 @@ class TestView(View):
             ctx5 = {
                 'university': name,
                 'photorefs': photorefs,
-                'api_key': 'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc'
+                'api_key': os.environ.get('GOOGLEKEY')
             }
             text6 = render_to_string("mainpg/add5.html", ctx5)
         except:
