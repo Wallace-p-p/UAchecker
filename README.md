@@ -31,4 +31,3 @@
 Wallace Pannace - [Linkedin](https://www.linkedin.com/in/wallace-pannace-48ba72249/) - wallacepncp@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-[⬆ Voltar ao topo](#readme-top)<br>
