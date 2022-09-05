@@ -1,65 +1,118 @@
+@-webkit-keyframes cf3FadeInOut {
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  14% {
+    opacity: 1;
+  }
+  19% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes cf3FadeInOut {
   0% {
-    opacity: 0; }
+    opacity: 0;
+  }
   4% {
-    opacity: 1; }
+    opacity: 1;
+  }
   14% {
-    opacity: 1; }
+    opacity: 1;
+  }
   19% {
-    opacity: 0; }
+    opacity: 0;
+  }
   100% {
-    opacity: 0; } }
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotdiv {
+  0% {
+    -webkit-transform: rotate(8deg);
+            transform: rotate(8deg);
+    opacity: 0;
+    top: 20%;
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 1;
+    top: 0;
+  }
+}
 
 @keyframes rotdiv {
   0% {
-    transform: rotate(8deg);
+    -webkit-transform: rotate(8deg);
+            transform: rotate(8deg);
     opacity: 0;
-    top: 20%; }
+    top: 20%;
+  }
   100% {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
     opacity: 1;
-    top: 0; } }
+    top: 0;
+  }
+}
 
 body {
   background-color: #f9fffb;
-  background-image: url("../../2.png");
+  background-image: url("../../2.PNG");
   text-align: justify;
   text-justify: auto;
-  font-family: 'Times New Roman', Times, serif; }
+  font-family: 'Times New Roman', Times, serif;
+}
 
 h1 {
   font-family: 'Segoe Print';
   font-weight: 900;
   font-size: 3em;
   -webkit-text-stroke: 1px #4D5382;
-  -webkit-text-fill-color: #f7deef; }
+  -webkit-text-fill-color: #f7deef;
+}
 
 h4 {
   font-family: Arial, Helvetica, sans-serif;
-  text-shadow: 0px 0px 5px white; }
+  text-shadow: 0px 0px 5px white;
+}
 
 .foot {
   background-color: #4D5382;
   border-top: black 1px solid;
-  color: white; }
+  color: white;
+}
 
 .pri {
-  background-color: rgba(0, 0, 0, 0.075); }
+  background-color: rgba(0, 0, 0, 0.075);
+}
 
 .sec {
-  background-color: #6B967B; }
+  background-color: #6B967B;
+}
 
 .ter {
   background-color: #46DB7D;
   height: 30rem;
-  background-image: url("../../1.png"); }
+  background-image: url("../../1.PNG");
+}
 
 .conC1 {
   background-color: #f7deef;
-  background-image: url("../../3.png"); }
+  background-image: url("../../3.PNG");
+}
 
 .conC2 {
-  background-color: #4D5382; }
+  background-color: #4D5382;
+}
 
 .ter img {
   opacity: 0;
@@ -68,45 +121,68 @@ h4 {
   height: 30rem;
   position: absolute;
   right: 0;
-  animation-name: cf3FadeInOut;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-duration: 49s; }
+  -webkit-animation-name: cf3FadeInOut;
+          animation-name: cf3FadeInOut;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 49s;
+          animation-duration: 49s;
+}
 
 .ter img.b2 {
-  animation-delay: 7s; }
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
 
 .ter img.b3 {
-  animation-delay: 14s; }
+  -webkit-animation-delay: 14s;
+          animation-delay: 14s;
+}
 
 .ter img.b4 {
-  animation-delay: 21s; }
+  -webkit-animation-delay: 21s;
+          animation-delay: 21s;
+}
 
 .ter img.b5 {
-  animation-delay: 28s; }
+  -webkit-animation-delay: 28s;
+          animation-delay: 28s;
+}
 
 .ter img.b6 {
-  animation-delay: 35s; }
+  -webkit-animation-delay: 35s;
+          animation-delay: 35s;
+}
 
 .ter img.b7 {
-  animation-delay: 42s; }
+  -webkit-animation-delay: 42s;
+          animation-delay: 42s;
+}
 
 #text {
   position: absolute;
   top: 9rem;
-  z-index: 1; }
+  z-index: 1;
+}
 
 #strip1 {
-  background-image: url("../../strip.png");
+  background-image: url("../../strip.PNG");
   height: 6px;
   background-repeat: no-repeat;
-  background-size: 100%; }
+  background-size: 100%;
+}
 
 .rotdiv {
   position: relative;
-  animation-name: rotdiv;
-  animation-duration: 1s;
-  animation-timing-function: ease; }
+  -webkit-animation-name: rotdiv;
+          animation-name: rotdiv;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
 
 .logotop {
   position: fixed;
@@ -114,12 +190,13 @@ h4 {
   left: 47%;
   z-index: 5;
   height: 125px;
-  width: 125px; }
+  width: 125px;
+}
 
 .logotop:hover {
+  -webkit-transition: 1s ease-in-out;
   transition: 1s ease-in-out;
   -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2); }
-
+  transform: scale(1.2);
+}
 /*# sourceMappingURL=main.css.map */
