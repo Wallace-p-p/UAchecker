@@ -15,9 +15,6 @@
     transform: rotate(8deg);
     opacity: 0;
     top: 20%; }
-  /*50% {
-        transform: rotate(-10deg);
-    }*/
   100% {
     transform: rotate(0deg);
     opacity: 1;
@@ -25,7 +22,7 @@
 
 body {
   background-color: #f9fffb;
-  background-image: url("../../2.PNG");
+  background-image: url("../../2.png");
   text-align: justify;
   text-justify: auto;
   font-family: 'Times New Roman', Times, serif; }
@@ -55,11 +52,11 @@ h4 {
 .ter {
   background-color: #46DB7D;
   height: 30rem;
-  background-image: url("../../1.PNG"); }
+  background-image: url("../../1.png"); }
 
 .conC1 {
   background-color: #f7deef;
-  background-image: url("../../3.PNG"); }
+  background-image: url("../../3.png"); }
 
 .conC2 {
   background-color: #4D5382; }
@@ -100,7 +97,7 @@ h4 {
   z-index: 1; }
 
 #strip1 {
-  background-image: url("../../strip.PNG");
+  background-image: url("../../strip.png");
   height: 6px;
   background-repeat: no-repeat;
   background-size: 100%; }

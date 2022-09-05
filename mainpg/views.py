@@ -27,13 +27,9 @@ class GeoView(View):
 
 class TeleportView(View):
     def get(self, request):
-        #response = requests.get('https://api.teleport.org/api/')
-        
-        #datab = response.json()
         ctx = {
             
         }
-        #print(str(datab))
         
         return render(request, 'mainpg/telep.html', ctx)
 
@@ -41,8 +37,7 @@ class Teleportadd1View(View):
     def get(self, request):
         slug = request.GET.get('slugc','')
         name = request.GET.get('namec','')
-        #slug= 'sao-paulo'
-        #name= 'Sao Paulo'
+        print(slug, name)
         #Teleport summary
         try:
             detail_s = requests.get('https://api.teleport.org/api/urban_areas/slug:'+slug+'/scores/')
@@ -55,10 +50,11 @@ class Teleportadd1View(View):
         }
         #text1 = render_to_string("mainpg/add1.html", ctx1)
         text1 = summary_ua
-
+        print(str(os.environ.get('GOOGLEKEY')))
         #GoogleMaps map
-        gmaps = googlemaps.Client(key=os.environ.get('GOOGLEKEY'))
+        gmaps = googlemaps.Client(key= 'AIzaSyCZP6jYsPKsw7D3_K_zsuvSAY8YFqlrKDc')
         
+        #str(os.environ.get('GOOGLEKEY'))
         try:
             location = name
             aqui = gmaps.places(query=location)
