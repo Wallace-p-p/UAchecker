@@ -37,7 +37,6 @@ class Teleportadd1View(View):
     def get(self, request):
         slug = request.GET.get('slugc','')
         name = request.GET.get('namec','')
-        print(slug, name)
         #Teleport summary
         try:
             detail_s = requests.get('https://api.teleport.org/api/urban_areas/slug:'+slug+'/scores/')
